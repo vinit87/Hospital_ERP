@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Backend_Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginData",
+        "Type": "Backend_Api.Model.UserLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Backend_Api.Controllers.DoctorController",
     "Method": "GetAll",
     "RelativePath": "api/Doctor",

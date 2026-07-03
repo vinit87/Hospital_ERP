@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\model\\userlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\model\\userlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\controllers\\patinetregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\controllers\\patinetregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\model\\patientregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,14 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\model\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\model\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|c:\\users\\vinit\\onedrive\\desktop\\hospital_erp\\erp_backend\\backend_api\\backend_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{850CEA8C-4C0E-461E-AC91-E9FD709D6A93}|Backend_Api\\Backend_Api.csproj|solutionrelative:backend_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,33 +58,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Backend_Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Backend_Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T16:54:57.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PatinetRegistrationController.cs",
               "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Controllers\\PatinetRegistrationController.cs",
               "RelativeDocumentMoniker": "Backend_Api\\Controllers\\PatinetRegistrationController.cs",
               "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Controllers\\PatinetRegistrationController.cs",
               "RelativeToolTip": "Backend_Api\\Controllers\\PatinetRegistrationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-28T04:23:23.493Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PatientRegistration.cs",
-              "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\PatientRegistration.cs",
-              "RelativeDocumentMoniker": "Backend_Api\\Model\\PatientRegistration.cs",
-              "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\PatientRegistration.cs",
-              "RelativeToolTip": "Backend_Api\\Model\\PatientRegistration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-28T04:21:47.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "DoctorController.cs",
               "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Controllers\\DoctorController.cs",
               "RelativeDocumentMoniker": "Backend_Api\\Controllers\\DoctorController.cs",
@@ -89,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Backend_Api.csproj",
               "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Backend_Api.csproj",
               "RelativeDocumentMoniker": "Backend_Api\\Backend_Api.csproj",
@@ -97,20 +105,32 @@
               "RelativeToolTip": "Backend_Api\\Backend_Api.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-15T17:03:22.64Z",
+              "WhenOpened": "2026-06-15T17:03:22.64Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Program.cs",
+              "RelativeDocumentMoniker": "Backend_Api\\Program.cs",
+              "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Program.cs",
+              "RelativeToolTip": "Backend_Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-14T16:13:27.985Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Doctor.cs",
-              "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\Doctor.cs",
-              "RelativeDocumentMoniker": "Backend_Api\\Model\\Doctor.cs",
-              "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\Doctor.cs",
-              "RelativeToolTip": "Backend_Api\\Model\\Doctor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UserLogin.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\UserLogin.cs",
+              "RelativeDocumentMoniker": "Backend_Api\\Model\\UserLogin.cs",
+              "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\UserLogin.cs",
+              "RelativeToolTip": "Backend_Api\\Model\\UserLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T17:00:35.53Z",
+              "WhenOpened": "2026-07-03T16:51:22.139Z",
               "EditorCaption": ""
             },
             {
@@ -121,21 +141,34 @@
               "RelativeDocumentMoniker": "Backend_Api\\appsettings.json",
               "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\appsettings.json",
               "RelativeToolTip": "Backend_Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-14T16:13:32.787Z"
+              "WhenOpened": "2026-06-14T16:13:32.787Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Program.cs",
-              "RelativeDocumentMoniker": "Backend_Api\\Program.cs",
-              "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Program.cs",
-              "RelativeToolTip": "Backend_Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Title": "PatientRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\PatientRegistration.cs",
+              "RelativeDocumentMoniker": "Backend_Api\\Model\\PatientRegistration.cs",
+              "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\PatientRegistration.cs",
+              "RelativeToolTip": "Backend_Api\\Model\\PatientRegistration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-14T16:13:27.985Z"
+              "WhenOpened": "2026-06-28T04:21:47.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Doctor.cs",
+              "DocumentMoniker": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\Doctor.cs",
+              "RelativeDocumentMoniker": "Backend_Api\\Model\\Doctor.cs",
+              "ToolTip": "C:\\Users\\vinit\\OneDrive\\Desktop\\Hospital_ERp\\ERP_Backend\\Backend_Api\\Backend_Api\\Model\\Doctor.cs",
+              "RelativeToolTip": "Backend_Api\\Model\\Doctor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T17:00:35.53Z"
             }
           ]
         }
