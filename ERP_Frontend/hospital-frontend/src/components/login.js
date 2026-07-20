@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
+   const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -27,9 +29,9 @@ function Login() {
     }
 
     // API Call
-    debugger;
-    try {
-      const response = await fetch('https://localhost:7146/api/auth/login', {
+ 
+       try {
+      const response = await fetch('https://localhost:7146/api/Auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,11 +42,12 @@ function Login() {
         }),
       });
 
-      const resultText = await response.text(); // kyunki API plain string return kar raha hai
+      const resultText = await response.text(); 
 
       if (response.ok) {
         setIsSuccess(true);
         setMessage(resultText); // "Welcome! Login successful."
+        navigate('/dashboard');
       } else {
         setIsSuccess(false);
         setMessage(resultText); // "Invalid email or password."
