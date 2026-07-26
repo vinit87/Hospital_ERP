@@ -123,53 +123,25 @@
         }
       }
     },
-    "/api/Doctor/{id}/{isActive}": {
-      "put": {
+    "/api/Doctor/{employeeId}": {
+      "delete": {
         "tags": [
           "Doctor"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "employeeId",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
             }
-          },
-          {
-            "name": "isActive",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -212,7 +184,7 @@
         ],
         "parameters": [
           {
-            "name": "mobileNumber",
+            "name": "phoneNo",
             "in": "query",
             "schema": {
               "type": "string"
@@ -303,23 +275,43 @@
       "PatientRegistration": {
         "type": "object",
         "properties": {
-          "firstName": {
+          "patientName": {
             "type": "string",
             "nullable": true
           },
-          "lastName": {
-            "type": "string",
-            "nullable": true
+          "age": {
+            "type": "integer",
+            "format": "int32"
           },
-          "mobileNumber": {
+          "dob": {
             "type": "string",
-            "nullable": true
-          },
-          "dateOfBirth": {
-            "type": "string",
-            "nullable": true
+            "format": "date-time"
           },
           "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "fatherName": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "disease": {
+            "type": "string",
+            "nullable": true
+          },
+          "enquiry": {
+            "type": "string",
+            "nullable": true
+          },
+          "surgeonName": {
             "type": "string",
             "nullable": true
           }

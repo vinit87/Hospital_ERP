@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MasterTable from './Master/MasterA';
+import PatientRegistration from './patient/PatientRegistration';
 import { useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, Database, ClipboardList, Users, LogOut,
@@ -21,10 +22,10 @@ const masterA = [
   { id: 3, name: 'Radiology', code: 'RD-03', status: 'Inactive' },
 ];
 
-const masterB = [
-  { id: 1, name: 'Dr. Mehta', code: 'DOC-01', status: 'Active' },
-  { id: 2, name: 'Dr. Kapoor', code: 'DOC-02', status: 'Active' },
-];
+// const masterB = [
+//   { id: 1, name: 'Dr. Mehta', code: 'DOC-01', status: 'Active' },
+//   { id: 2, name: 'Dr. Kapoor', code: 'DOC-02', status: 'Active' },
+// ];
 
 const recentPatients = [
   { id: 101, name: 'Ravi Sharma', age: 34, gender: 'Male', phone: '98xxxxxx21', date: '18 Jul 2026' },
@@ -35,7 +36,7 @@ const recentPatients = [
 const menuItems = [
   { key: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { key: 'masterA', label: 'Master A', icon: Database },
-  { key: 'masterB', label: 'Master B', icon: Database },
+  // { key: 'masterB', label: 'Master B', icon: Database },
   { key: 'registration', label: 'Patient registration', icon: ClipboardList },
 ];
 
@@ -96,44 +97,44 @@ function StatCard({ label, value, delta }) {
 //   );
 // }
 
-function RegistrationForm() {
-  return (
-    <div className="panel form-panel">
-      <h3>Patient registration</h3>
-      <p className="panel-subtext">Enter patient details and save</p>
-      <div className="form-grid">
-        <div className="form-field">
-          <label>Full name</label>
-          <input placeholder="Enter patient name" />
-        </div>
-        <div className="form-field">
-          <label>Age</label>
-          <input type="number" placeholder="Enter age" />
-        </div>
-        <div className="form-field">
-          <label>Gender</label>
-          <select>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div className="form-field">
-          <label>Phone number</label>
-          <input placeholder="Enter phone number" />
-        </div>
-        <div className="form-field form-field-full">
-          <label>Address</label>
-          <textarea rows={3} placeholder="Enter address" />
-        </div>
-      </div>
-      <div className="form-actions">
-        <button className="btn-primary">Save patient</button>
-        <button className="btn-secondary">Clear</button>
-      </div>
-    </div>
-  );
-}
+// function RegistrationForm() {
+//   return (
+//     <div className="panel form-panel">
+//       <h3>Patient registration</h3>
+//       <p className="panel-subtext">Enter patient details and save</p>
+//       <div className="form-grid">
+//         <div className="form-field">
+//           <label>Full name</label>
+//           <input placeholder="Enter patient name" />
+//         </div>
+//         <div className="form-field">
+//           <label>Age</label>
+//           <input type="number" placeholder="Enter age" />
+//         </div>
+//         <div className="form-field">
+//           <label>Gender</label>
+//           <select>
+//             <option>Male</option>
+//             <option>Female</option>
+//             <option>Other</option>
+//           </select>
+//         </div>
+//         <div className="form-field">
+//           <label>Phone number</label>
+//           <input placeholder="Enter phone number" />
+//         </div>
+//         <div className="form-field form-field-full">
+//           <label>Address</label>
+//           <textarea rows={3} placeholder="Enter address" />
+//         </div>
+//       </div>
+//       <div className="form-actions">
+//         <button className="btn-primary">Save patient</button>
+//         <button className="btn-secondary">Clear</button>
+//       </div>
+//     </div>
+//   );
+// }
 
 export default function Dashboard() {
     const navigate = useNavigate();                          // add this
@@ -143,7 +144,7 @@ export default function Dashboard() {
 
   const pageTitle =
     active === 'masterA' ? 'Master A' :
-    active === 'masterB' ? 'Master B' :
+    // active === 'masterB' ? 'Master B' :
     active === 'registration' ? 'Patient registration' : 'Dashboard';
 
   return (
@@ -242,9 +243,9 @@ export default function Dashboard() {
             </div>
           )}
 
-          {active === 'masterA' && <MasterTable title="Master A" apiUrl="https://localhost:7146/api/Doctor" />}
-          {active === 'masterB' && <MasterTable title="Master B" apiUrl="https://localhost:7146/api/Doctor"  />}
-          {active === 'registration' && <RegistrationForm />}
+          {active === 'masterA' && <MasterTable title="Doctor Master" apiUrl="https://localhost:7146/api/Doctor" />}
+          {/* {active === 'masterB' && <MasterTable title="Master B" apiUrl="https://localhost:7146/api/Doctor"  />} */}
+          {active === 'registration' && <PatientRegistration apiUrl="https://localhost:7146/api/PatinetRegistration" />}
         </main>
       
       </div>

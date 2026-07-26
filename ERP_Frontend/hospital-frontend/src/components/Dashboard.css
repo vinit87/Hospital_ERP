@@ -349,7 +349,7 @@ td {
 /* ---------- Registration form ---------- */
 .form-panel {
   padding: 24px;
-  max-width: 640px;
+  /* max-width: 640px; */
 }
 
 .form-panel h3 {
@@ -467,3 +467,4 @@ td {
 .btn-danger:hover {
   background: #dc2626;
 }
+

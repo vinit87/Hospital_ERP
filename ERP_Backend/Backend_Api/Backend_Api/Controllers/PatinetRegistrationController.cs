@@ -33,11 +33,16 @@ namespace Backend_Api.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("p_Mode", "INSERT");
-            cmd.Parameters.AddWithValue("p_FirstName", request.FirstName);
-            cmd.Parameters.AddWithValue("p_LastName", request.LastName);
-            cmd.Parameters.AddWithValue("p_MobileNumber", request.MobileNumber);
-            cmd.Parameters.AddWithValue("p_DateOfBirth", request.DateOfBirth);
+            cmd.Parameters.AddWithValue("p_PatientName", request.PatientName);
+            cmd.Parameters.AddWithValue("p_Age", request.Age);
+            cmd.Parameters.AddWithValue("p_Dob", request.Dob);
             cmd.Parameters.AddWithValue("p_Gender", request.Gender);
+            cmd.Parameters.AddWithValue("p_FatherName", request.FatherName);
+            cmd.Parameters.AddWithValue("p_Address", request.Address);
+            cmd.Parameters.AddWithValue("p_PhoneNo", request.PhoneNo);
+            cmd.Parameters.AddWithValue("p_Disease", request.Disease);
+            cmd.Parameters.AddWithValue("p_Enquiry", request.Enquiry);
+            cmd.Parameters.AddWithValue("p_SurgeonName", request.SurgeonName);
 
             using var reader = cmd.ExecuteReader();
 
@@ -57,9 +62,10 @@ namespace Backend_Api.Controllers
         }
 
         // ========================
-        // GET: api/Patient/Followup?mobileNumber=9999988888
+        // GET: api/PatinetRegistration/Followup?phoneNo=9999988888
+        // ========================
         [HttpGet("Followup")]
-        public IActionResult Followup([FromQuery] string mobileNumber)
+        public IActionResult Followup([FromQuery] string phoneNo)
         {
             using var connection = new MySqlConnection(
                 _configuration.GetConnectionString("DefaultConnection"));
@@ -69,11 +75,16 @@ namespace Backend_Api.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("p_Mode", "FOLLOWUP");
-            cmd.Parameters.AddWithValue("p_FirstName", DBNull.Value);
-            cmd.Parameters.AddWithValue("p_LastName", DBNull.Value);
-            cmd.Parameters.AddWithValue("p_MobileNumber", mobileNumber);
-            cmd.Parameters.AddWithValue("p_DateOfBirth", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_PatientName", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Age", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Dob", DBNull.Value);
             cmd.Parameters.AddWithValue("p_Gender", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_FatherName", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Address", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_PhoneNo", phoneNo);
+            cmd.Parameters.AddWithValue("p_Disease", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Enquiry", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_SurgeonName", DBNull.Value);
 
             using var reader = cmd.ExecuteReader();
 
@@ -82,7 +93,7 @@ namespace Backend_Api.Controllers
                 return NotFound(new
                 {
                     Success = 0,
-                    Message = "No patient found with this mobile number."
+                    Message = "No patient found with this phone number."
                 });
             }
 
@@ -90,13 +101,17 @@ namespace Backend_Api.Controllers
             {
                 return Ok(new
                 {
-                    PatientID = Convert.ToInt32(reader["PatientID"]),
-                    FirstName = reader["FirstName"].ToString(),
-                    LastName = reader["LastName"].ToString(),
-                    MobileNumber = reader["MobileNumber"].ToString(),
-                    DateOfBirth = reader["DateOfBirth"].ToString(),
-                    Gender = reader["Gender"].ToString(),
-                    CreatedAt = reader["CreatedAt"].ToString()
+                    PatientID = Convert.ToInt32(reader["id"]),
+                    PatientName = reader["patient_name"].ToString(),
+                    Age = Convert.ToInt32(reader["age"]),
+                    Dob = reader["dob"].ToString(),
+                    Gender = reader["gender"].ToString(),
+                    FatherName = reader["father_name"].ToString(),
+                    Address = reader["address"].ToString(),
+                    PhoneNo = reader["phone_no"].ToString(),
+                    Disease = reader["disease"].ToString(),
+                    Enquiry = reader["enquiry"].ToString(),
+                    SurgeonName = reader["surgeon_name"].ToString()
                 });
             }
 

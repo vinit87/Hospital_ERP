@@ -44,13 +44,28 @@ export default function MasterTable({ title, apiUrl }) {
     setShowForm(true);
   };
 
+  // const openEditForm = (row) => {
+  //   setEditingRow(row);
+  //   setFormData({
+  //     firstName: row.firstName,
+  //     lastName: row.lastName,
+  //     email: row.email,
+  //     department: row.department,
+  //     // trim in case API returns a full ISO datetime — <input type="date"> needs YYYY-MM-DD
+  //     hireDate: row.hireDate ? row.hireDate.slice(0, 10) : '',
+  //   });
+  //   setShowForm(true);
+  // };
+
   const openEditForm = (row) => {
     setEditingRow(row);
     setFormData({
+      employeeId: row.employeeId,
       firstName: row.firstName,
       lastName: row.lastName,
       email: row.email,
       department: row.department,
+      isActive: row.isActive,
       // trim in case API returns a full ISO datetime — <input type="date"> needs YYYY-MM-DD
       hireDate: row.hireDate ? row.hireDate.slice(0, 10) : '',
     });
@@ -66,52 +81,91 @@ export default function MasterTable({ title, apiUrl }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSave = async () => {
+// const handleSave = async () => {
+
+//     if (!formData.firstName || !formData.lastName || !formData.email) return;
+
+//     // Only check for duplicates when adding a new record (employeeId === 0)
+//     // Skip this check while editing, since that record already exists by design
+//     if (formData.employeeId === 0) {
+//       const isDuplicate = rows.some(
+//         (r) => r.email.trim().toLowerCase() === formData.email.trim().toLowerCase()
+//       );
+//       if (isDuplicate) {
+//         alert('Record already exists.');
+//         return;
+//       }
+//     }
+
+//     setSaving(true);
+//     try {
+//       const payload = {
+//         ...formData,
+//         hireDate: formData.hireDate ? new Date(formData.hireDate).toISOString() : null,
+//       };
+
+//       const response = await fetch(apiUrl, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(payload),
+//       });
+//       if (!response.ok) throw new Error('Save failed');
+
+//       closeForm();
+//       fetchData();
+//     } catch (err) {
+//       console.error(err);
+//       alert('Something went wrong while saving. Please try again.');
+//     } finally {
+//       setSaving(false);
+//     }
+//   };
+const handleSave = async () => {
     if (!formData.firstName || !formData.lastName || !formData.email) return;
+
     setSaving(true);
     try {
-      if (editingRow) {
-        // EDIT — PUT to /api/MasterA/{id}
-        const response = await fetch(`${apiUrl}/${editingRow.id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...formData, id: editingRow.id }),
-        });
-        if (!response.ok) throw new Error('Update failed');
-        const updated = await response.json();
-        setRows(rows.map((r) => (r.id === editingRow.id ? updated : r)));
-      } else {
-        // ADD — POST to /api/MasterA
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
-        if (!response.ok) throw new Error('Create failed');
-        const created = await response.json();
-        setRows([...rows, created]);
+      const payload = {
+        ...formData,
+        hireDate: formData.hireDate ? new Date(formData.hireDate).toISOString() : null,
+      };
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error('Save failed');
+
+      const result = await response.json(); // 0 = insert, 1 = update, 2 = already exists
+
+      if (result === 2) {
+        alert('This record already exists.');
+        return;
       }
+
       closeForm();
+      fetchData();
     } catch (err) {
       console.error(err);
       alert('Something went wrong while saving. Please try again.');
     } finally {
       setSaving(false);
     }
-  };
+};
 
   // ---- Delete ----
-  const handleDelete = async (id) => {
-    if (!window.confirm('Delete this record?')) return;
+ const handleDelete = async (employeeId) => {
+      if (!window.confirm('Delete this record?')) return;
     try {
-      const response = await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+      const response = await fetch(`${apiUrl}/${employeeId}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Delete failed');
-      setRows(rows.filter((r) => r.id !== id));
+      setRows(rows.filter((r) => r.employeeId !== employeeId));
     } catch (err) {
       console.error(err);
       alert('Could not delete this record.');
     }
-  };
+};
 
   if (loading) return <div className="panel"><p className="panel-message">Loading...</p></div>;
   if (error) return <div className="panel"><p className="panel-message panel-error">{error}</p></div>;
@@ -121,7 +175,7 @@ export default function MasterTable({ title, apiUrl }) {
       <div className="panel-header">
         <div>
           <h3>{title}</h3>
-          <p className="panel-subtext">Manage records used across the system</p>
+          <p className="panel-subtext">Doctor Details </p>
         </div>
         <button className="btn-primary" onClick={openAddForm}>
           <Plus size={16} /> Add new
@@ -156,7 +210,7 @@ export default function MasterTable({ title, apiUrl }) {
                     <button className="icon-btn" onClick={() => openEditForm(row)}>
                       <Pencil size={16} />
                     </button>
-                    <button className="icon-btn icon-btn-danger" onClick={() => handleDelete(row.id)}>
+                    <button className="icon-btn icon-btn-danger" onClick={() => handleDelete(row.employeeId)}>
                       <Trash2 size={16} />
                     </button>
                   </div>

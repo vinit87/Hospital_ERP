@@ -9,7 +9,7 @@ namespace Backend_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DoctorController: ControllerBase
+    public class DoctorController : ControllerBase
     {
         private readonly string _connectionString;
 
@@ -88,6 +88,18 @@ namespace Backend_Api.Controllers
                 // UPDATE CASE — EmployeeId > 0 hai
                 if (doctor.EmployeeId > 0)
                 {
+                    // Duplicate check — same email+department kisi AUR record mein hai kya
+                    // (khud ke record ko exclude karo, warna self-match "duplicate" dikhega)
+                    MySqlCommand checkCmd = new MySqlCommand(
+                        "SELECT COUNT(*) FROM doctor_emp WHERE email = @Email AND department = @Department AND employee_id != @EmployeeId", con);
+                    checkCmd.Parameters.AddWithValue("@Email", doctor.Email);
+                    checkCmd.Parameters.AddWithValue("@Department", doctor.Department);
+                    checkCmd.Parameters.AddWithValue("@EmployeeId", doctor.EmployeeId);
+                    int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                    if (count > 0)
+                        return Ok(2);  // 2 → Already exists (kisi doosre record se clash)
+
                     MySqlCommand updateCmd = new MySqlCommand(
                         @"UPDATE doctor_emp 
                   SET first_name = @FirstName, 
@@ -109,37 +121,61 @@ namespace Backend_Api.Controllers
         }
 
 
-        // PUT: api/doctor/{id}/{isActive}
-        [HttpPut("{id}/{isActive}")]
-        public ActionResult<int> ToggleActive(int id, bool isActive)
+        [HttpDelete("{employeeId}")]
+        public ActionResult Delete(int employeeId)
         {
             using (MySqlConnection con = new MySqlConnection(_connectionString))
             {
                 con.Open();
 
-                // Pehle current status check karo
-                MySqlCommand checkCmd = new MySqlCommand(
-                    "SELECT IsActive FROM doctor_emp WHERE employee_id = @EmployeeId", con);
-                checkCmd.Parameters.AddWithValue("@EmployeeId", id);
-                object result = checkCmd.ExecuteScalar();
+                // Step 1: pehle record ka current data fetch karo
+                MySqlCommand fetchCmd = new MySqlCommand(
+                    "SELECT * FROM doctor_emp WHERE employee_id = @EmployeeId", con);
+                fetchCmd.Parameters.AddWithValue("@EmployeeId", employeeId);
 
-                if (result == null)
-                    return NotFound();  // Employee nahi mila
+                string firstName = "", lastName = "", email = "", department = "";
+                object hireDate = DBNull.Value;
+                object isActive = DBNull.Value;
+                bool found = false;
 
-                bool currentStatus = Convert.ToBoolean(result);
+                using (var reader = fetchCmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        found = true;
+                        firstName = reader["first_name"].ToString();
+                        lastName = reader["last_name"].ToString();
+                        email = reader["email"].ToString();
+                        department = reader["department"].ToString();
+                        hireDate = reader["hire_date"];
+                        isActive = reader["IsActive"];
+                    }
+                }
 
-                // Agar same status hai to koi change nahi
-                if (currentStatus == isActive)
-                    return Ok(2);  // 2 → No change (already same status)
+                if (!found)
+                    return NotFound(); // record already exist nahi karta
 
-                // Update karo
-                MySqlCommand updateCmd = new MySqlCommand(
-                    "UPDATE doctor_emp SET IsActive = @IsActive WHERE employee_id = @EmployeeId", con);
-                updateCmd.Parameters.AddWithValue("@IsActive", isActive ? 0 : 1);
-                updateCmd.Parameters.AddWithValue("@EmployeeId", id);
-                updateCmd.ExecuteNonQuery();
+                // Step 2: deleted table mein backup insert karo
+                MySqlCommand backupCmd = new MySqlCommand(
+                    @"INSERT INTO doctor_emp_deleted 
+              (employee_id, first_name, last_name, email, department, hire_date, is_active) 
+              VALUES (@EmployeeId, @FirstName, @LastName, @Email, @Department, @HireDate, @IsActive)", con);
+                backupCmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+                backupCmd.Parameters.AddWithValue("@FirstName", firstName);
+                backupCmd.Parameters.AddWithValue("@LastName", lastName);
+                backupCmd.Parameters.AddWithValue("@Email", email);
+                backupCmd.Parameters.AddWithValue("@Department", department);
+                backupCmd.Parameters.AddWithValue("@HireDate", hireDate);
+                backupCmd.Parameters.AddWithValue("@IsActive", isActive);
+                backupCmd.ExecuteNonQuery();
 
-                return Ok(isActive ? 0 : 1);  // 0 → Inactive hua, 1 → Active hua
+                // Step 3: asli table se delete karo
+                MySqlCommand deleteCmd = new MySqlCommand(
+                    "DELETE FROM doctor_emp WHERE employee_id = @EmployeeId", con);
+                deleteCmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+                deleteCmd.ExecuteNonQuery();
+
+                return Ok();
             }
         }
     }
