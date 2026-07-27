@@ -117,5 +117,57 @@ namespace Backend_Api.Controllers
 
             return BadRequest(new { Success = 0, Message = "Something went wrong." });
         }
+
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            var patients = new List<PatientRegistration>();
+
+            
+           using var connection = new MySqlConnection(
+                _configuration.GetConnectionString("DefaultConnection"));
+
+            connection.Open();
+
+            using var cmd = new MySqlCommand("sp_PatientRegistration", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("p_Mode", "GETALL");
+
+            // Agar SP me baaki parameters required hain to null bhej do
+            cmd.Parameters.AddWithValue("p_PatientName", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Age", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Dob", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Gender", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_FatherName", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Address", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_PhoneNo", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Disease", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_Enquiry", DBNull.Value);
+            cmd.Parameters.AddWithValue("p_SurgeonName", DBNull.Value);
+
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                patients.Add(new PatientRegistration
+                {
+
+                    PatientName = reader["patient_name"].ToString(),
+                    Age = Convert.ToInt32(reader["age"]),
+                    Dob = Convert.ToDateTime(reader["dob"]),
+                    Gender = reader["gender"].ToString(),
+                    FatherName = reader["father_name"].ToString(),
+                    Address = reader["address"].ToString(),
+                    PhoneNo = reader["phone_no"].ToString(),
+                    Disease = reader["disease"].ToString(),
+                    Enquiry = reader["enquiry"].ToString(),
+                    SurgeonName = reader["surgeon_name"].ToString()
+                });
+            }
+
+            return Ok(patients);
+        }
+
     }
 }

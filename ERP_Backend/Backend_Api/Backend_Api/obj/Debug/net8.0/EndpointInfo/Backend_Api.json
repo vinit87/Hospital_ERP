@@ -198,6 +198,18 @@
         }
       }
     },
+    "/api/PatinetRegistration/GetAll": {
+      "get": {
+        "tags": [
+          "PatinetRegistration"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [

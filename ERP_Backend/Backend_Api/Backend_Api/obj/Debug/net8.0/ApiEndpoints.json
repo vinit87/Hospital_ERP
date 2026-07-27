@@ -95,6 +95,16 @@
   },
   {
     "ContainingType": "Backend_Api.Controllers.PatinetRegistrationController",
+    "Method": "GetAll",
+    "RelativePath": "api/PatinetRegistration/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_Api.Controllers.PatinetRegistrationController",
     "Method": "Insert",
     "RelativePath": "api/PatinetRegistration/Insert",
     "HttpMethod": "POST",
