@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MasterTable from './Master/MasterA';
 import PatientRegistration from './patient/PatientRegistration';
 import { useNavigate } from 'react-router-dom';
@@ -9,12 +10,13 @@ import {
 import './Dashboard.css';
 
 // ---- Dummy data — replace with your API calls ----
-const dummyStats = [
-  { label: 'Total patients', value: '1,284', delta: '+12 this week' },
-  { label: 'Master A records', value: '48', delta: '+3 this week' },
-  { label: 'Master B records', value: '26', delta: '+1 this week' },
-  { label: 'Registrations today', value: '9', delta: 'Live' },
-];
+// const dummyStats = [
+//   { label: 'Total patients', value: '1,284'},
+//   { label: 'Doctor records', value: '48'},
+//   { label: 'Cancer Cases', value: '26' },
+//   { label: 'Registrations today', value: '9'},
+// ];
+
 
 const masterA = [
   { id: 1, name: 'General Ward', code: 'GW-01', status: 'Active' },
@@ -27,11 +29,11 @@ const masterA = [
 //   { id: 2, name: 'Dr. Kapoor', code: 'DOC-02', status: 'Active' },
 // ];
 
-const recentPatients = [
-  { id: 101, name: 'Ravi Sharma', age: 34, gender: 'Male', phone: '98xxxxxx21', date: '18 Jul 2026' },
-  { id: 102, name: 'Anjali Verma', age: 27, gender: 'Female', phone: '99xxxxxx45', date: '18 Jul 2026' },
-  { id: 103, name: 'Suresh Yadav', age: 51, gender: 'Male', phone: '97xxxxxx10', date: '17 Jul 2026' },
-];
+// const recentPatients = [
+//   { id: 101, name: 'Ravi Sharma', age: 34, gender: 'Male', phone: '98xxxxxx21', date: '18 Jul 2026' },
+//   { id: 102, name: 'Anjali Verma', age: 27, gender: 'Female', phone: '99xxxxxx45', date: '18 Jul 2026' },
+//   { id: 103, name: 'Suresh Yadav', age: 51, gender: 'Male', phone: '97xxxxxx10', date: '17 Jul 2026' },
+// ];
 
 const menuItems = [
   { key: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -53,10 +55,48 @@ function StatCard({ label, value, delta }) {
 
 
 export default function Dashboard() {
-    const navigate = useNavigate();                          // add this
+    const navigate = useNavigate();                          
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false); // add this
   const [active, setActive] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  // Recent registrations — real data from API
+const [recentPatients, setRecentPatients] = useState([]);
+const [loading, setLoading] = useState(false);
+
+const [stats, setStats] = useState({
+  totalPatients: 0,
+  cancerCases: 0,
+  registrationsToday: 0,
+  doctorRecords: 0,
+});
+const [statsLoading, setStatsLoading] = useState(true);
+
+useEffect(() => {
+  fetch('https://localhost:7146/api/Dashboard/summary')
+    .then((res) => res.json())
+    .then((data) => {
+      setStats({
+        totalPatients: data.totalPatients,
+        cancerCases: data.cancerCases,
+        registrationsToday: data.registrationsToday,
+        doctorRecords: data.doctorRecords,
+      });
+    })
+    .catch((err) => console.error('Error fetching dashboard summary:', err))
+    .finally(() => setStatsLoading(false));
+}, []);
+
+useEffect(() => {
+  fetch('https://localhost:7146/api/PatinetRegistration/GetAll')
+    .then((res) => res.json())
+    .then((data) => {
+      const list = Array.isArray(data) ? data : (data.items ?? []);
+      setRecentPatients(list);
+    })
+    .catch((err) => console.error('Error fetching patients:', err))
+    .finally(() => setLoading(false));
+}, []);
 
   const pageTitle =
     active === 'masterA' ? 'Master A' :
@@ -121,9 +161,12 @@ export default function Dashboard() {
         <main className="page-content">
           {active === 'dashboard' && (
             <div className="stack">
-              <div className="stats-grid">
-                {dummyStats.map((s) => <StatCard key={s.label} {...s} />)}
-              </div>
+            <div className="stats-grid">
+  <StatCard label="Total patients" value={statsLoading ? '...' : stats.totalPatients} />
+  <StatCard label="Doctor records" value={statsLoading ? '...' : stats.doctorRecords} />
+  <StatCard label="Cancer Cases" value={statsLoading ? '...' : stats.cancerCases} />
+  <StatCard label="Registrations today" value={statsLoading ? '...' : stats.registrationsToday} />
+</div>
               <div className="panel">
                 <div className="panel-header">
                   <div className="panel-title-with-icon">
@@ -139,17 +182,17 @@ export default function Dashboard() {
                         <th>Age</th>
                         <th>Gender</th>
                         <th>Phone</th>
-                        <th>Date</th>
+                        <th>Disease</th>
                       </tr>
                     </thead>
                     <tbody>
                       {recentPatients.map((p) => (
                         <tr key={p.id}>
-                          <td>{p.name}</td>
+                          <td>{p.patientName}</td>
                           <td className="muted">{p.age}</td>
                           <td className="muted">{p.gender}</td>
-                          <td className="muted">{p.phone}</td>
-                          <td className="muted">{p.date}</td>
+                          <td className="muted">{p.phoneNo}</td>
+                          <td className="muted">{p.disease}</td>
                         </tr>
                       ))}
                     </tbody>

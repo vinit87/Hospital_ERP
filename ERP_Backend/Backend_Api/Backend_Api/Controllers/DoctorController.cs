@@ -128,7 +128,7 @@ namespace Backend_Api.Controllers
             {
                 con.Open();
 
-                // Step 1: pehle record ka current data fetch karo
+                
                 MySqlCommand fetchCmd = new MySqlCommand(
                     "SELECT * FROM doctor_emp WHERE employee_id = @EmployeeId", con);
                 fetchCmd.Parameters.AddWithValue("@EmployeeId", employeeId);
@@ -153,9 +153,9 @@ namespace Backend_Api.Controllers
                 }
 
                 if (!found)
-                    return NotFound(); // record already exist nahi karta
+                    return NotFound(); 
 
-                // Step 2: deleted table mein backup insert karo
+               
                 MySqlCommand backupCmd = new MySqlCommand(
                     @"INSERT INTO doctor_emp_deleted 
               (employee_id, first_name, last_name, email, department, hire_date, is_active) 
@@ -169,7 +169,7 @@ namespace Backend_Api.Controllers
                 backupCmd.Parameters.AddWithValue("@IsActive", isActive);
                 backupCmd.ExecuteNonQuery();
 
-                // Step 3: asli table se delete karo
+                
                 MySqlCommand deleteCmd = new MySqlCommand(
                     "DELETE FROM doctor_emp WHERE employee_id = @EmployeeId", con);
                 deleteCmd.Parameters.AddWithValue("@EmployeeId", employeeId);

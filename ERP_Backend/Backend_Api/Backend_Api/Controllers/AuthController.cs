@@ -18,11 +18,7 @@ namespace Backend_Api.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserLogin loginData)
         {
-            // Step 1: Basic validation
-            //if (string.IsNullOrEmpty(loginData.Email) || string.IsNullOrEmpty(loginData.Password))
-            //{
-            //    return BadRequest("Email and Password are required.");
-            //}
+            
 
             string connectionString = _configuration.GetConnectionString("DefaultConnection");
 

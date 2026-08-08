@@ -134,7 +134,7 @@ namespace Backend_Api.Controllers
 
             cmd.Parameters.AddWithValue("p_Mode", "GETALL");
 
-            // Agar SP me baaki parameters required hain to null bhej do
+            
             cmd.Parameters.AddWithValue("p_PatientName", DBNull.Value);
             cmd.Parameters.AddWithValue("p_Age", DBNull.Value);
             cmd.Parameters.AddWithValue("p_Dob", DBNull.Value);
