@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import './Dashboard.css';
 
+import AIChatbot from "../components/AIChatbot/AIChatbot";
+
 // ---- Dummy data — replace with your API calls ----
 // const dummyStats = [
 //   { label: 'Total patients', value: '1,284'},
@@ -233,6 +235,7 @@ useEffect(() => {
           </div>
         </div>
       )}
+      <AIChatbot />
       </>   
   );
 }
